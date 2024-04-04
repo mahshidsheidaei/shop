@@ -37,9 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+      #app django
     'accounts',
-    'pages'
-  
+    'pages',
+    #app django you installed
+    "crispy_forms",
+    "crispy_bootstrap5",
+     "django.contrib.sites",  # new
+    "allauth",  # new
+    "allauth.account",  # new
+    # "allauth.socialaccount",  # new
+    # "allauth.socialaccount.providers.github",  # new for GitHub provider
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -49,8 +59,13 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+      "allauth.account.middleware.AccountMiddleware",  # new
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    
 ]
+
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -65,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -124,3 +140,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+SITE_ID = 1  # new
+
+ACCOUNT_EMAIL_VERIFICATION = "none"  # new
+
+LOGIN_REDIRECT_URL = "home"  # new
+LOGOUTREDIRECT_URL = "home"  # new
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+ACCOUNT_USERNAME_REQUIRED=False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE=False
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_AUTHENTICATION_METHOD='email'
+ACCOUNT_UNIQUE_EMAIL=True
+# ACCOUNT_SESSION_REMEMBER=True
+# as1234567
